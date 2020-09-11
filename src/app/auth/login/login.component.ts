@@ -33,14 +33,20 @@ export class LoginComponent implements OnInit {
       username: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required)
     });
-
     this.activatedRoute.queryParams
       .subscribe(params => {
+        if (params.registered !== undefined && params.registered === 'true'){
+          this.toastr.success('Signup Successful');
+          this.registerSuccessMessage = 'Please Check your inbox for activation email '
+            + 'activate your account before you Login!';
+        }
+        /*
         if (params.isRegistered !== undefined && params.isRegistered === 'true'){
           this.toastr.success('Signup Successful');
           this.registerSuccessMessage = 'Please Check your inbox for activation email '
             + 'activate your account before you Login!';
         }
+        */
       });
   }
 

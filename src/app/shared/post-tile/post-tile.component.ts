@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { PostModel } from '../../shared/post-model';
+import { faComments } from '@fortawesome/free-solid-svg-icons';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-post-tile',
@@ -6,10 +9,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./post-tile.component.css']
 })
 export class PostTileComponent implements OnInit {
+  @Input() data: Array<PostModel>;
+  faComments = faComments;
 
-  constructor() { }
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
+  }
+
+  goToPost(id: number): void {
+    this.router.navigateByUrl('/view-post/' + id);
   }
 
 }

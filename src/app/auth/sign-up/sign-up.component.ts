@@ -42,7 +42,8 @@ export class SignUpComponent implements OnInit {
       .subscribe(data => {
         this.router.navigate(
           ['/login'],
-           { queryParams: { isRegistered: 'true' } }
+           //{ queryParams: { isRegistered: 'true' } }
+           { queryParams: { registered: 'true' } }
         );
       }, error => {
         console.log(error);
